@@ -1,0 +1,117 @@
+body
+{
+    background-color: #f0e9ed;
+}
+
+
+
+header
+{
+    position: fixed; 
+    top: 0px;
+    left: 0px;
+    height: 100px;
+    width: 100%;
+
+    background-color: #846a6a;
+    color: #353b3c;
+}
+
+header h1
+{
+    position: fixed;
+    top: 0px;
+    left: 150px;
+    height: 100px;
+
+    font-size: 40px;
+}
+
+header img
+{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+
+
+aside
+{
+    position: fixed;
+    top: 100px;
+    left: -100px;
+    height: 100%;
+    width: 150px;
+
+    background-color: #786161;
+    color: #353b3c;
+}
+
+aside ul
+{
+    visibility: hidden;
+}
+
+aside a, aside a:hover, aside a:active, aside a:visited
+{
+    color: #353b3c;
+    text-decoration: none;
+}
+
+aside:hover
+{
+    transform: translate(100px);
+    background-color: #846a6a;
+    transition: 0.5s;
+}
+
+aside:hover ul
+{
+    visibility: visible;
+}
+
+
+
+#page
+{
+    margin-left: 200px;
+    margin-top: 150px;
+    width: 80%
+}
+
+#page h2
+{
+    color: #846a6a;
+    font-size: 30px;
+    text-decoration: underline 1px;
+}
+
+#page section
+{
+    color: #353b3c;
+    font-size: 18px;
+    margin-left: 15px;
+}
+
+#page h3
+{
+    color: #846a6a;
+    font-size: 25px;
+}
+
+#page article
+{
+    margin-left: 15px;
+}
+
+#page h4
+{
+    color: #846a6a;
+    font-size: 18px;
+}
+
+#copyright
+{
+    font-size: 12px;
+}

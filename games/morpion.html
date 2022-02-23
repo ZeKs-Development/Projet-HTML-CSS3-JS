@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	 <head>
+	    <meta charset="utf-8">
+        <title>Mini-Jeux</title>
+        <link rel="icon" href="../graphics/home.png">
+        <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="../CSS/morpion.css">
+        <script src="../Javascript/morpion/gestion.js"></script>
+        <script src="../Javascript/morpion/affichage.js"></script>
+        <script src="../Javascript/morpion/ia.js"></script>
+    </head>
+
+    <body onload="morpion_init();">
+        <aside>
+            <ul>
+                <li><a href="morpion.html">Morpion</a></li>
+                <li><a href="pendu.html">Pendu</a></li>
+            </ul>
+        </aside>
+        
+        <header>
+            <a href="../accueil.html"><img src="../graphics/home.png"></a>
+            <div id="titre">
+                <h1>Mini-Jeux</h1>
+            </div>
+        </header>
+
+        <div id="page">
+            <div id="jeu">
+                <div id="plateau">
+                    <div class="ligne">
+                        <canvas id="case:0:0" onclick="morpion_clique(this.id);">Erreur</canvas><!--
+                        --><canvas id="case:1:0" onclick="morpion_clique(this.id);">Erreur</canvas><!--
+                        --><canvas id="case:2:0" onclick="morpion_clique(this.id);">Erreur</canvas>
+                    </div>
+                    <div class="ligne">
+                        <canvas id="case:0:1" onclick="morpion_clique(this.id);">Erreur</canvas><!--
+                        --><canvas id="case:1:1" onclick="morpion_clique(this.id);">Erreur</canvas><!--
+                        --><canvas id="case:2:1" onclick="morpion_clique(this.id);">Erreur</canvas>
+                    </div>
+                    <div class="ligne">
+                        <canvas id="case:0:2" onclick="morpion_clique(this.id);">Erreur</canvas><!--
+                        --><canvas id="case:1:2" onclick="morpion_clique(this.id);">Erreur</canvas><!--
+                        --><canvas id="case:2:2" onclick="morpion_clique(this.id);">Erreur</canvas>
+                    </div>
+                </div>
+
+                <div id="parametres">
+                    <form id="form" onchange="morpion_init();">
+                        <div id="nbJoueur">
+                            <input type="radio" name="nbJoueur" id="1joueur">
+                            <label for="1joueur">1 Joueur</label>
+
+                            <input type="radio" name="nbJoueur" id="2joueurs" checked>
+                            <label for="2joueurs">2 Joueurs</label>
+                        </div>
+
+                        <div id="ai">
+                            <div id="tour">
+                                <label for="tour">Choisissez votre symbole: 
+                                    <input type="radio" name="tour" id="croix" checked>
+                                    <label for="croix">Croix</label>
+
+                                    <input type="radio" name="tour" id="rond">
+                                    <label for="rond">Rond</label>
+                                </label>
+                            </div>
+                            <div id="start">
+                                <label for="start">Choisissez qui commence: 
+                                    <input type="radio" name="start" id="joueur" checked>
+                                    <label for="joueur">Vous</label>
+
+                                    <input type="radio" name="start" id="ordi">
+                                    <label for="ordi">Ordinateur</label>
+                                </label>
+                            </div>
+                            <div id="difficulte">
+                                <label for="difficulte">Difficulté: </label>
+                                <select id="choixDifficulte">
+                                    <option value="0">Facile</option>
+                                    <option value="1">Difficile</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+
+                    <button id="reset" onclick="morpion_init();">Recommencer</button>
+
+                    <span id="gagnant"></span>
+                </div>
+            </div>
+            <div id="description">
+                <p>Le tic-tac-toe, aussi appelé « morpion » est un jeu de réflexion se pratiquant à deux joueurs au tour par tour dont le but est  de créer le premier un alignement.</p>
+                <a href="https://fr.wikipedia.org/wiki/Tic-tac-toe">En savoir plus</a>
+            </div>
+        </div>
+    </body>
+</html>

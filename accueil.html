@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	    <head>
+	    <meta charset="utf-8">
+	    <title>Mini-Jeux</title>
+        <link rel="icon" href="graphics/home.png">
+	    <link rel="stylesheet" href="CSS/style.css">
+    </head>
+
+    <body>
+        <aside>
+            <ul>
+                <li><a href="games/morpion.html">Morpion</a></li>
+                <li><a href="games/pendu.html">Pendu</a></li>
+            </ul>
+        </aside>
+
+        <header>
+            <a href="accueil.html"><img src="graphics/home.png"></a>
+            <h1>Mini-Jeux</h1>
+        </header>
+
+        <div id="page">
+            <h2>Compte rendu du projet</h2>
+            <section>
+                <p>Pour ce projet, j'ai décidé de faire le morpion ainsi que le pendu si j'en ai le temps.</p>
+
+                <h3>Morpion</h3>
+                <article>
+                    <p>Je ne savais pas trop par où commencer pour mon site donc je suis d'avord aller voir comment fonctionnaient les canvas sur <a href="https://openclassrooms.com/fr/courses/1916641-dynamisez-vos-sites-web-avec-javascript/1922103-lelement-canvas">OpenClassrooms</a>. A partir de la j'ai donc décidé de créer neuf canvas, un pour chaque case du plateau de jeu. J'ai ensuite écrit ma première fonction.</p>
+
+                    <h4>morpion_init():</h4>
+                    <p>La première chose que j'ai faite dans cette fonction, c'est dessiner les neuf cases en récupérant le contexte des canvas depuis leurs ids (sous forme "case:i:j" me permettant de parcourir une double boucle for). Au début, je les avait dessinées dans une boucle qui s'exécutait donc neuf fois. Seulement, il y avait un espace entre chaque case.</p>
+                    <img src="compte_rendu/ecart_case.png">
+                    <p>Après quelques recherches et un peu de CSS, j'ai régler le problème en rengroupant chaque ligne sous un "div" et réglant leur taille (100px de haut et 300px de large) pour avoir ce que je voulais.</p>
+                    <img src="compte_rendu/ecart_case_bon.png">
+                    <p>La fonction "morpion_init()" réinitialise toutes les variables globales. Elle est appelé au chargement de la page avec "onload" mais aussi quand le joueur change un paramètre avec "onchange" et quand le joueur clique sur le bouton recommencer.</p>
+
+                    <h4>Variables globales:</h4>
+                    <ul>
+                        <li>nbJoueur: retient le nombre de joueurs choisi par l'utilisateur</li>
+                        <li>difficulte: retient la difficulté choisie par l'utilisateur</li>
+                        <li>vide: constante</li>
+                        <li>croix: constante</li>
+                        <li>rond: constante</li>
+                        <li>tour: retient le tour actuel (croix ou rond)</li>
+                        <li>plateau: tableau à deux dimensions retenant la valeur de chaque case (vide, croix ou rond)</li>
+                        <li>casesVides: tableau retenant sous forme de texte ("case:i:j") chaque case vide</li>
+                        <li>fini: variable booléenne pour savoir si la partie est finie</li>
+                    </ul>
+
+                    <p>Il me fallait ensuite détecter le clique sur un canvas. Je l'ai donc fait en utilisant l'évenement "onclick" qui appelle ma fonction "morpion_clique(id)" (l'id se récupère en appelant "this.id" dans le fichier html). J'ai trouvé cette solution en cherchant un peu sur les <a href="https://stackoverflow.com/questions/4825295/javascript-onclick-to-get-the-id-of-the-clicked-button">forums.</a></p>
+
+                    <h4>morpion_clique(id):</h4>
+                    <p>La fonction commence par une condition qui vérifie si la partie est toujours en cours. On regarde ensuite si la case est bien vide dans notre tableau à deux dimensions. Si c'est le cas, on enlève la case en question de la liste contenant les cases vides (grâce à la méthode <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array">array.splice</a>) et change la valeur de la case dans le plateau. On vérifie si cette case permet au tour en question de gagné avec "morpion_verifier(i, j)"" et si tout s'est bien passé on peu dessiner avec "morpion_dessinerSymbole(context)". On regarde ensuite le nombre de joueurs, si on joue tout seul, "morpion_ia" est appelée.</p>
+
+                    <h4>morpion_verifier(i, j):</h4>
+                    <p>Cette fonction vérifie toutes les cases autours de la case envoyée en paramètre pour regarder si tour est gagnant. Si c'est le cas on appelle "mopion_gagne()" qui se contente d'écrire dans la zone appropriée qui a gagné. La fonction vérifie aussi que si toutes les cases sont remplies alors la partie est finie et il y a égalité.</p>
+
+                    <h4>"L'intelligence artificielle":</h4>
+                    <p>Le jeu, quand il n'y a qu'un seul joueur, permet deux difficultés:
+                    facile et difficile. En mode facile, l'ordinateur se contente de choisir une case au hasard (en tirant un <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Math/random">nombre aléatoire</a>) parmi les cases vides et de jouer dedans. En mode difficile, l'ordinateur va regarder chaque case vide et leur attribuer un score (50 ou 75 ou 100). L'ordinateur jouera dans la case avec le plus gros score. Le score se calcul dans "morpion_regarderCasesVoisines(i, j, signe)": <br>
+                    -Si la case permet un alignement de deux cases de même signe alors elle vaut 50 <br>
+                    -Si la case permet un alignement de trois cases de même signe alors elle vaut 100 <br>
+                    -Si la case permet au joueur adverse de gagner, elle vaut 75. <br>
+                    De cette manière l'ordinateur a un ordre de priorités à suivre.</p>
+                </article>
+
+                <h3>Pendu</h3>
+                <article>
+                    <p>Après de nombreuses recherches sur comment lire dans un fichier et par manque de temps je n'ai point réussi à terminer mon pendu. Il reste donc à l'état de prototype.</p>
+
+                    <p>En effet, il se dessine petit à petit à la manière des cases du morpion quand on clique dessus. En incrémentant la variable "nbErreurs" à chaque clique le pendu se dessine partie du corp par partie du corp.</p>
+                </article>
+
+                <h3>Cascade Style Sheet</h3>
+                <article>
+                    <h4>style.css:</h4>
+                    <p>Ce fichier est repris par les trois pages html soit "accueil.html", "morpion.html" et "pendu.html".</p>
+
+                    <p>Il met en place le thème de couleur choisi avec un <a href="https://coolors.co/app">générateur de thèmes aléatoires</a> (mes talents artistiques n'étant pas à la hauteur). Il place aussi de manière "fixed" le header, aside et leurs contenus respectifs. Le aside possède une petite animation le faisant se décaler vers la droite lorsqu'il est survolé. Pour finir, ce fichier contient toutes les modifications concernant la police du texte et les marges.</p>
+
+                    <h4>morpion.css et pendu.css:</h4>
+                    <p>Ces fichiers placent tous les éléments des jeux de manière "absolute" par rapport à leur conteneur: #jeu Ils mettent aussi en place une petite animation de lors du survole des canvas.</p>
+
+                    <p>Ils sont inclus dans la page html de leur jeu respectif.</p>
+                </article>
+
+                <span id="copyright">©Pierre Champion</span>
+            </section>
+        </div>
+    </body>
+</html>

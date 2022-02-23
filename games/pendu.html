@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+	 <head>
+	    <meta charset="utf-8">
+        <title>Mini-Jeux</title>
+        <link rel="icon" href="../graphics/home.png">
+        <link rel="stylesheet" href="../CSS/style.css">
+        <link rel="stylesheet" href="../CSS/pendu.css">
+        <script src="../Javascript/pendu.js"></script>
+    </head>
+
+    <body onload="pendu_init();">
+        <aside>
+            <ul>
+                <li><a href="morpion.html">Morpion</a></li>
+                <li><a href="pendu.html">Pendu</a></li>
+            </ul>
+        </aside>
+        
+        <header>
+            <a href="../accueil.html"><img src="../graphics/home.png"></a>
+            <div>
+                <h1>Mini-Jeux</h1>
+            </div>
+        </header>
+
+        <div id="page">
+            <div id="jeu">
+                <canvas id="potence" width="400" height="300" onclick="pendu_erreur();">Erreur</canvas><!--
+                --><canvas id="mot" width="400" height="100">Erreur</canvas>
+            </div>
+            <div id="description">
+                <p>Le Pendu est un jeu consistant à trouver un mot en devinant quelles sont les lettres qui le composent.</p>
+                <a href="https://fr.wikipedia.org/wiki/Le_Pendu_(jeu)">En savoir plus</a>
+            </div>
+        </div>
+    </body>
+</html>
